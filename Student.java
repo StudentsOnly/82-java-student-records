@@ -15,9 +15,9 @@ public class Student {
     this.status = status;
   }
 
-  public Student getRandom() {
+  public static Student getRandom() {
     Random r = new Random();
-    String[] names = {};
+    String[] names = {"Alph", "Betty", "Carmen", "Daniel", "Emanuel", "Fred", "Gustav"};
     String fullName = names[r.nextInt(0, names.length)] + " " +
       (char) r.nextInt('A', 'Z') + ".";
     double gpa = r.nextDouble(1.0, 4.01);
@@ -49,5 +49,10 @@ public class Student {
 
   public void setStatus(Status status) {
     this.status = status;
+  }
+
+  @Override
+  public String toString() {
+    return "%s(%.2f, %s)".formatted(name, gpa, status);
   }
 }

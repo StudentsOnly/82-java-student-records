@@ -6,7 +6,7 @@ public class Student {
   private Status status;
 
   enum Status {
-    ACTIVE, INACTIVE, NON_DEGREE;
+    ACTIVE, INACTIVE, NON_DEGREE, GRADUATED;
   }
 
   private Student(String name, double gpa, Status status) {

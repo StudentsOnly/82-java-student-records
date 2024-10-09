@@ -15,6 +15,10 @@ public class Student {
     this.status = status;
   }
 
+  public static Student newStudent(String name, double gpa, Status status) {
+    return new Student(name, gpa, status);
+  }
+
   public static Student getRandom() {
     Random r = new Random();
     String[] names = {"Alph", "Betty", "Carmen", "Daniel", "Emanuel", "Fred", "Gustav"};

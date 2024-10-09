@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -10,14 +11,25 @@ public class Main {
       .mapToObj(i -> Student.getRandom())
       .toList();
 
-    System.out.printf("STUDENTS[%d]", students.size());
+    printTen("Students", students);
+
+    var filtered = filterStudents(students, s -> s.getStatus() == Student.Status.ACTIVE);
+    printTen("Filtered Students", filtered);
+  }
+
+  private static List<Student> filterStudents(List<Student> students,
+                                              Predicate<Student> predicate) {
+    return students.stream()
+      .filter(predicate)
+      .toList();
+  }
+
+  private static void printTen(String header, List<?> list) {
+    System.out.printf("%s[%d]%n", header.toUpperCase(), list.size());
     System.out.println("--------------------------------------");
-    students.stream()
+    list.stream()
       .limit(10)
       .forEach(System.out::println);
     System.out.println();
-
-
-    System.out.println("--------------------------------------");
   }
 }
